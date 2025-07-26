@@ -31,6 +31,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 		},
 	});
 
+	console.log('EMAIL:', !!process.env.EMAIL);
+	console.log('PASS:', !!process.env.PASS);
 	try {
 		await transporter.sendMail({
 			from: email,
@@ -49,6 +51,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 			},
 		});
 	} catch (error) {
-		res.status(500).json({ message: 'Failed to send message', error });
+		console.error('Error sending mail:', error);
+		res
+			.status(500)
+			.json({ message: 'Failed to send message', error: error.message });
 	}
 }
