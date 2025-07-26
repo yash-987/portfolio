@@ -1,0 +1,24 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"dev": "tsc -b && node dist/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.3",
+		"@types/nodemailer": "^6.4.17",
+		"@vercel/node": "^5.3.7",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.1",
+		"express": "^5.1.0",
+		"nodemailer": "^7.0.5",
+		"typescript": "^5.8.3",
+		"zod": "^4.0.10"
+	}
+}

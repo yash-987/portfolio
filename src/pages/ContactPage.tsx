@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { MailIcon } from '../icons/MailIcon';
 import { PhoneIcon } from '../icons/PhoneIcon';
 import { MapIcon } from '../icons/MapIcon';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const ContactPage = () => {
 	const [formData, setFormData] = useState({
@@ -9,11 +11,30 @@ export const ContactPage = () => {
 		email: '',
 		message: '',
 	});
-
-	const handleSubmit = (e: React.MouseEvent) => {
+	const [loading, setLoading] = useState(false);
+	const handleSubmit = async (e: React.MouseEvent) => {
 		e.preventDefault();
-		console.log('Form submitted:', formData);
-		alert('Message sent! (This is a demo)');
+
+		if (!formData.name || !formData.email || !formData.message) {
+			toast.warning('Please fill in all the fields');
+			return;
+		}
+		setLoading(true);
+		try {
+			const config = {
+				headers: {
+					'Content-type': 'application/json',
+				},
+			};
+			await axios.post('/api/contact', formData, config);
+
+			toast.success('Your message has been sent successfully');
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setLoading(false);
+		}
+
 		setFormData({ name: '', email: '', message: '' });
 	};
 
@@ -49,7 +70,7 @@ export const ContactPage = () => {
 							</div>
 							<div className="flex items-center gap-4">
 								<PhoneIcon />
-								<span className="text-gray-700">+919870202249</span>
+								<span className="text-gray-700">+91 9870202249</span>
 							</div>
 							<div className="flex items-center gap-4">
 								<MapIcon />
@@ -111,7 +132,7 @@ export const ContactPage = () => {
 								onClick={handleSubmit}
 								className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
 							>
-								Send Message
+								{loading ? 'Sending Message...' : 'Send Message'}
 							</button>
 						</div>
 					</div>
