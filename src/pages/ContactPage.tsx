@@ -45,15 +45,15 @@ export const ContactPage = () => {
 						<div className="space-y-4">
 							<div className="flex items-center gap-4">
 								<MailIcon />
-								<span className="text-gray-700">john.doe@example.com</span>
+								<span className="text-gray-700">ys2599518@gmail.com</span>
 							</div>
 							<div className="flex items-center gap-4">
 								<PhoneIcon />
-								<span className="text-gray-700">+1 (555) 123-4567</span>
+								<span className="text-gray-700">+919870202249</span>
 							</div>
 							<div className="flex items-center gap-4">
 								<MapIcon />
-								<span className="text-gray-700">San Francisco, CA</span>
+								<span className="text-gray-700">New Delhi, India</span>
 							</div>
 						</div>
 					</div>
