@@ -1,4 +1,4 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+// import { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 import z from 'zod';
 
@@ -8,14 +8,14 @@ const contactBodySchema = z.object({
 	message: z.string(),
 });
 
-type ContactBody = z.infer<typeof contactBodySchema>;
+// type ContactBody = z.infer<typeof contactBodySchema>;
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
 	if (req.method !== 'POST') {
 		return res.status(405).json({ message: 'Method not allowed' });
 	}
 
-	const { name, email, message }: ContactBody = req.body;
+	const { name, email, message } = req.body;
 
 	const { success } = contactBodySchema.safeParse(req.body);
 
