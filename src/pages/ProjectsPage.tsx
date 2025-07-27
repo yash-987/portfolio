@@ -2,6 +2,7 @@ import { ProjectCard } from '../components/ProjectCard';
 import youtubeImage from '../assets/youtube.jpg';
 import instagramImage from '../assets/instagram.jpg';
 import chatAppImage from '../assets/chatApp.jpg';
+import brainlyImage from '../assets/brainly.jpg';
 export const ProjectsPage = () => {
 	const projects = [
 		{
@@ -42,9 +43,9 @@ export const ProjectsPage = () => {
 			description:
 				'A second brain application to save notes, articles, etc. and share them.',
 
-			imageUrl: '',
+			imageUrl: brainlyImage,
 			githubUrl: 'https://github.com/yash-987/second-brain',
-			liveUrl: '',
+			liveUrl: 'https://brain-keeper.vercel.app/',
 			technologies: ['React', 'TypeScript', 'Tailwind CSS', 'MongoDB'],
 		},
 	];
